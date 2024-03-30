@@ -11,20 +11,16 @@
             padding: 0;
         }
 
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-        }
-
         #video {
-            width: 100%;
-            height: 400px;
+            width: 50%;
+            height: 600px;
             border: none;
         }
 
         label {
             display: block;
             margin-top: 20px;
+            text-align: center;
         }
 
         select {
@@ -33,7 +29,8 @@
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #fff;
+            background-color: #fff;           
+            text-align: center;
         }
 
         /* Style the dropdown arrow */
@@ -48,10 +45,9 @@
     </style>
 </head>
 <body>
-    <h1>Server Selector</h1>
     <iframe id="video" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="640" height="320"></iframe>
     <br>
-    <label for="serverSelect">Select a server:</label>
+    <label for="serverSelect">If a video doesn't work, try changing servers, and report this issue so I can fix it !</label>
     <select id="serverSelect" onchange="changeServer()">
         <option value="server1">Server 1</option>
         <option value="server2">Server 2</option>
