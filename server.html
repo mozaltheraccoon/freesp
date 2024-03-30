@@ -9,67 +9,141 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+            margin-top: 20px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        hr {
+            width: 50%;
+            text-align: center;
         }
 
         #video {
             width: 50%;
             height: 600px;
             border: none;
+            margin: 20px;
         }
 
         label {
             display: block;
-            margin-top: 20px;
             text-align: center;
+            margin-bottom: 20px;
+
         }
 
         select {
-            width: 100%;
+            width: 50%;
             padding: 10px;
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: #fff;           
             text-align: center;
+            margin: 5px;
         }
 
-        /* Style the dropdown arrow */
         select::-ms-expand {
             display: none;
         }
 
-        /* Add hover effect to the options */
         option:hover {
             background-color: #f0f0f0;
+        }
+
+        #buttons {
+            width: 50%;
+            text-align: center;
+        }
+
+        button {
+            margin: 10px;
+            width: 25%;
+            padding: 5px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
+    <h1>FREESOUTHPARK.de</h1>
+    <p>Watch South Park for free online</p>
+    <hr>
     <iframe id="video" frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="640" height="320"></iframe>
     <br>
     <label for="serverSelect">If a video doesn't work, try changing servers, and report this issue so I can fix it !</label>
-    <select id="serverSelect" onchange="changeServer()">
-        <option value="server1">Server 1</option>
-        <option value="server2">Server 2</option>
+    <select id="serverSelect" onchange="change()">
+        <option value="1">Server 1</option>
+        <option value="2">Server 2</option>
+    </select>   
+    <select id="episodeSelect" onchange="change()">
+        <option value="1">Episode 1</option>
+        <option value="2">Episode 2</option>
+        <option value="3">Episode 3</option>
+        <option value="4">Episode 4</option>
     </select>
+    <div id="buttons"> 
+        <button id="previousBtn">Previous Episode</button>
+        <button id="nextBtn">Next Episode</button>
+    </div>
+
 
     <script>
-        function changeServer() {
+        const server1URLS = [
+            "",
+            "https://drive.google.com/file/d/1h-MlDijeHqJHAldM2uDz2WX7w9OJX1Xw/preview",
+            "https://drive.google.com/file/d/1h-MlDijeHqJHAldM2uDz2WX7w9OJX1Xw/preview",
+            "https://drive.google.com/file/d/1h-MlDijeHqJHAldM2uDz2WX7w9OJX1Xw/preview",
+            "https://drive.google.com/file/d/1h-MlDijeHqJHAldM2uDz2WX7w9OJX1Xw/preview",
+        ]
+        const server2URLS = [
+            "",
+            "https://drive.google.com/file/d/179jrxCUKr87HEaK326exc--CqAwrfEJZ/preview",
+            "https://drive.google.com/file/d/1X55xjTiKyc4DoViu3LFxw_-ntGdccHz5/preview",
+            "https://drive.google.com/file/d/15fxug-iuWOdBID4AuN1ZlvQfLaTMAf7e/preview",
+            "https://drive.google.com/file/d/1oAWZTbV-zM8PXHCMEooJRq_UR0Bm3cij/preview",
+        ]
+
+        const serverSelect = document.getElementById("serverSelect");
+        const episodeSelect = document.getElementById("episodeSelect");
+
+        const previousBtn = document.getElementById("previousBtn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        previousBtn.addEventListener("click", function() {
+            episodeSelect.value = episodeSelect.value - 1
+            change();
+        })
+        nextBtn.addEventListener("click", function() {
+            episodeSelect.value = episodeSelect.value + 1
+            change();
+        })
+        function change() {
             const iframe = document.getElementById("video");
-            const serverSelect = document.getElementById("serverSelect");
-            const selectedServer = serverSelect.value;
 
-            if (selectedServer === "server1") {
-                // Set the iframe URL for Server 1
-                iframe.src = "https://drive.google.com/file/d/1mLbI-ELHkrWnfl0sW-jpTclJJE-bzNun/view?usp=sharing";
-            } else if (selectedServer === "server2") {
-                // Set the iframe URL for Server 2
-                iframe.src = "https://drive.google.com/file/d/1mLbI-ELHkrWnfl0sW-jpTclJJE-bzNun/preview";
+            const server = serverSelect.value;
+            const episode = episodeSelect.value;
+
+            if (server === "1") {
+                iframe.src = server1URLS[episode];
+            } else if (server === "2") {
+                iframe.src = server2URLS[episode];
             }
-        }
 
-        // Initialize with default server (e.g., Server 1)
-        changeServer();
+        }
+        change();
     </script>
 </body>
 </html>
