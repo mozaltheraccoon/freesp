@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Selector</title>
+</head>
+<body>
+    <h1>Server Selector</h1>
+    <iframe id="video "frameborder="0" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="640" height="320"></iframe>
+    <br>
+    <label for="serverSelect">Select a server:</label>
+    <select id="serverSelect" onchange="changeServer()">
+        <option value="server1">Server 1</option>
+        <option value="server2">Server 2</option>
+    </select>
+
+    <script>
+        function changeServer() {
+            const iframe = document.getElementById("video");
+            const serverSelect = document.getElementById("serverSelect");
+            const selectedServer = serverSelect.value;
+
+            if (selectedServer === "server1") {
+                // Set the iframe URL for Server 1
+                iframe.src = "https://gdplayer.to/embed/?YkV1WWJjMjZ4blhSemJIT2U5UjBRclREUlJoU2RmQlVuYk56R3l4MG4zZmU1VVA2UUx0N1ZraXNKbTZlTlNYY3F3L0I1UC9iT3hwR2REL2dnMG9OZTlRcnZWVHozeTRpYlV5SmZQZll3WGV1M1dhZXpzTjJLWFVXTnJWeUN6bE9ualloaWhJWVJndTNuelgxTm9ocjB3PT0,";
+            } else if (selectedServer === "server2") {
+                // Set the iframe URL for Server 2
+                iframe.src = "https://gdplayer.to/embed/?SnFuYjJEcUVLZ3UwNjJWREk3U3o1dE5uRkpzeGJ4Uk5Kd2xqOEduRWxHVlB0VXQ4alQwRHdJTml1LzYyN0xWZk13VEJ2RHdKMDlsbzYxT0JYRVBiTlMvWXVFbUp6b2VscWtKNEc2MXZXWGtUclkwN0hhaVJ0bS8xbTRXdGlJdTA3K0F4WDhMcXdzUzdSb3l0NHlQRU93PT0,";
+            }
+        }
+
+        // Initialize with default server (e.g., Server 1)
+        changeServer();
+    </script>
+</body>
+</html>
