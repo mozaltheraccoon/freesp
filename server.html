@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Selector</title>
+    <title>FREESOUTHPARK.de</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,14 +32,15 @@
         #video {
             width: 50%;
             height: 600px;
-            border: none;
-            margin: 20px;
+            border: 1px solid #ccc;
+            margin: 20px 20px 0 20px;
+            border-radius: 10px;
         }
 
         label {
             display: block;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
 
         }
 
@@ -87,61 +88,206 @@
     <select id="serverSelect" onchange="change()">
         <option value="1">Server 1</option>
         <option value="2">Server 2</option>
-    </select>   
+    </select>  
+    <select id="seasonSelect" onchange="change()">
+        <option value="1">Season 1</option>
+        <option value="2">Season 2</option>
+        <option value="3">Season 3</option>
+        <option value="4">Season 4</option>
+        <option value="5">Season 5</option>
+        <option value="6">Season 6</option>
+        <option value="7">Season 7</option>
+        <option value="8">Season 8</option>
+        <option value="9">Season 9</option>
+        <option value="10">Season 10</option>
+        <option value="11">Season 11</option>
+        <option value="12">Season 12</option>
+        <option value="13">Season 13</option>
+        <option value="14">Season 14</option>
+        <option value="15">Season 15</option>
+        <option value="16">Season 16</option>
+        <option value="17">Season 17</option>
+        <option value="18">Season 18</option>
+        <option value="19">Season 19</option>
+        <option value="20">Season 20</option>
+        <option value="21">Season 21</option>
+        <option value="22">Season 22</option>
+        <option value="23">Season 23</option>
+        <option value="24">Season 24</option>
+        <option value="25">Season 25</option>
+        <option value="26">Season 26</option>
+    </select> 
     <select id="episodeSelect" onchange="change()">
-        <option value="1">Episode 1</option>
-        <option value="2">Episode 2</option>
-        <option value="3">Episode 3</option>
-        <option value="4">Episode 4</option>
+
     </select>
-    <div id="buttons"> 
-        <button id="previousBtn">Previous Episode</button>
-        <button id="nextBtn">Next Episode</button>
-    </div>
 
 
     <script>
-        const server1URLS = [
-            "",
-            "https://drive.google.com/file/d/1h-MlDijeHqJHAldM2uDz2WX7w9OJX1Xw/preview",
-            "https://drive.google.com/file/d/1h-MlDijeHqJHAldM2uDz2WX7w9OJX1Xw/preview",
-            "https://drive.google.com/file/d/1h-MlDijeHqJHAldM2uDz2WX7w9OJX1Xw/preview",
-            "https://drive.google.com/file/d/1h-MlDijeHqJHAldM2uDz2WX7w9OJX1Xw/preview",
-        ]
-        const server2URLS = [
-            "",
-            "https://drive.google.com/file/d/179jrxCUKr87HEaK326exc--CqAwrfEJZ/preview",
-            "https://drive.google.com/file/d/1X55xjTiKyc4DoViu3LFxw_-ntGdccHz5/preview",
-            "https://drive.google.com/file/d/15fxug-iuWOdBID4AuN1ZlvQfLaTMAf7e/preview",
-            "https://drive.google.com/file/d/1oAWZTbV-zM8PXHCMEooJRq_UR0Bm3cij/preview",
-        ]
 
-        const serverSelect = document.getElementById("serverSelect");
-        const episodeSelect = document.getElementById("episodeSelect");
+        const seasons = {
+            1: [
+                "",
+                {
+                    episodeNumber: 1,
+                    url: embedURL("https://drive.google.com/file/d/179jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Cartman Gets an Anal Probe",
+                },
+                {
+                    episodeNumber: 2,
+                    url: embedURL("https://drive.google.com/file/d/1X55xjTiKyc4DoViu3LFxw_-ntGdccHz5/view?usp=sharing"),
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Weight Gain 4000",
+                },
+                {
+                    episodeNumber: 3,
+                    url: embedURL("https://drive.google.com/file/d/15fxug-iuWOdBID4AuN1ZlvQfLaTMAf7e/view?usp=sharing"),    
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Volcano",
+                },
+                {
+                    episodeNumber: 4,
+                    url: embedURL("https://drive.google.com/file/d/1oAWZTbV-zM8PXHCMEooJRq_UR0Bm3cij/view?usp=sharing"),                
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Big Gay Al's Big Gay Boat Ride",
+                },
+                {
+                    episodeNumber: 5,
+                    url: embedURL("https://drive.google.com/file/d/1Szf8RTh2qRgcInD2H-L441EECl0XaZKx/view?usp=sharing"),                
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "An Elephant Makes Love to a Pig",
+                },
+                {
+                    episodeNumber: 6,
+                    url: embedURL("https://drive.google.com/file/d/12VBYZHzDoStt5mTDE5DVFMJPb9XeegNE/view?usp=sharing"),                
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Death",
+                },
+                {
+                    episodeNumber: 7,
+                    url: embedURL("https://drive.google.com/file/d/1LDGVQIBIMbAUgZ703fSlxYsK1hWBhiqF/view?usp=sharing"),                
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Pinkeye",
+                },
+                {
+                    episodeNumber: 8,
+                    url: embedURL("https://drive.google.com/file/d/1Sqqb4hcZxUi2AlKuVf65zNxpvIfNDObo/view?usp=sharing"),                
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Starvin' Marvin",
+                },
+                {
+                    episodeNumber: 9,
+                    url: embedURL("https://drive.google.com/file/d/1X4CkH1baRhlugGqqMGQGbv51gDalIdPP/view?usp=sharing"),                
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Mr. Hankey, the Christmas Poo",
+                },
+                {
+                    episodeNumber: 10,
+                    url: embedURL("https://drive.google.com/file/d/1WSvypoIVGS3YrGu8KNlGWkoy3L-RY_T-/view?usp=sharing"),                
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Damien",
+                },
+                {
+                    episodeNumber: 11,
+                    url: embedURL("https://drive.google.com/file/d/1oTnQ6Wz7LwAWH0xbbuaTXcp4OLqThrEW/view?usp=sharing"),                
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Tom's Rhinoplasty",
+                },
+                {
+                    episodeNumber: 12,
+                    url: embedURL("https://drive.google.com/file/d/17hcidi4c5pxNUdm9HW3fRcrQIf509YCy/view?usp=sharing"),                
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Mecha-Streisand",
+                },
+                {
+                    episodeNumber: 13,
+                    url: embedURL("https://drive.google.com/file/d/1ZBI1rCdOtFTXxWJkYKbV5Y9fnXvQFYA_/view?usp=sharing"),                
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Cartman's Mom Is a Dirty Slut",
+                },
+            ],
+            2: [
+                "",
+                {
+                    episodeNumber: 1,
+                    url: embedURL("https://drive.google.com/file/d/10FoDES1TpNxL1dGxA0udyfFu11Ib95wh/view?usp=sharing"),
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Terrance and Phillip in Not Without My Anus",
+                },
+                {
+                    episodeNumber: 2,
+                    url: embedURL("https://drive.google.com/file/d/1X55xjTiKyc4DoViu3LFxw_-ntGdccHz5/view?usp=sharing"),
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Cartman's Mom Is Still a Dirty Slut",
+                }, 
+                {
+                    episodeNumber: 3,
+                    url: embedURL("https://drive.google.com/file/d/1On8VCD7mUTfZ0J095mvflV4NUGOGY3kc/view?usp=sharing"),
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Chickenlover",
+                }, 
+                {
+                    episodeNumber: 4,
+                    url: embedURL("https://drive.google.com/file/d/1eqwjaZz_kVZgxnpsiKkaslI4aC4n1qsV/view?usp=sharing"),
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Ike's Wee Wee",
+                }, 
+                {
+                    episodeNumber: 5,
+                    url: embedURL("https://drive.google.com/file/d/1SH_ek31jyPx03YNKj-Pc6SgjOP4tFIbT/view?usp=sharing"),
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "Conjoined Fetus Lady",
+                }, 
+                {
+                    episodeNumber: 6,
+                    url: embedURL("https://drive.google.com/file/d/1M-4T7iH2xtS_QjXaJcmquq8If9wRaE5k/view?usp=sharing"),
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "The Mexican Staring Frog of Southern Sri Lanka",
+                }, 
+                {
+                    episodeNumber: 7,
+                    url: embedURL("https://drive.google.com/file/d/18NWZGbtQNek0V77E1n8_WPNvJO4iQ4BR/view?usp=sharing"),
+                    url2: embedURL("https://drive.google.com/file/d/139jrxCUKr87HEaK326exc--CqAwrfEJZ/view?usp=sharing"),
+                    episodeName: "City on the Edge of Forever",
+                }, 
+            ],
+        };
+        function addEpisodes() {
+            const seasonArray = seasons[season]
+            for (let i = 0; i < seasonArray.length - 1; i++) {
+                const option = document.createElement('option');
+                option.value = seasonArray[i + 1].episodeNumber;
+                option.textContent = `Episode ${seasonArray[i + 1].episodeNumber} - ${seasonArray[i + 1].episodeName}`;
+                episodeSelect.appendChild(option);
+            }
+        }
+        let season = 1
+        addEpisodes();
 
-        const previousBtn = document.getElementById("previousBtn");
-        const nextBtn = document.getElementById("nextBtn");
+        function embedURL(baseURL) {
+            const fileId = baseURL.match(/\/d\/(.+?)\//)[1];
 
-        previousBtn.addEventListener("click", function() {
-            episodeSelect.value = episodeSelect.value - 1
-            change();
-        })
-        nextBtn.addEventListener("click", function() {
-            episodeSelect.value = episodeSelect.value + 1
-            change();
-        })
+            const modifiedLink = `https://drive.google.com/file/d/${fileId}/preview`;
+
+            return(modifiedLink);
+        }
         function change() {
-            const iframe = document.getElementById("video");
-
+            const serverSelect = document.getElementById("serverSelect");
+            const episodeSelect = document.getElementById("episodeSelect");
+            const seasonSelect = document.getElementById("seasonSelect");
             const server = serverSelect.value;
             const episode = episodeSelect.value;
+            season = seasonSelect.value;
+            episodeSelect.innerHTML = ""
+            addEpisodes();
 
+            episodeSelect.value = episode
+            const iframe = document.getElementById("video");
             if (server === "1") {
-                iframe.src = server1URLS[episode];
+                iframe.src = (seasons[season])[episode].url;
             } else if (server === "2") {
-                iframe.src = server2URLS[episode];
+                iframe.src = (seasons[season])[episode].url2;
             }
-
         }
         change();
     </script>
